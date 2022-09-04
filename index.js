@@ -47,7 +47,7 @@ function init() {
             message: "Enter your manager's ID: ",
             validate: function(value) {
                 if (!/^[0-9]*$/.test(value)) {
-                    alert("Please enter an integer: ");
+                    return "Please enter an integer";
                 } else {
                     return true;
                 }
@@ -57,19 +57,67 @@ function init() {
             type: "input",
             name: "managerEmail",
             message: "Enter your manager's email: ",
-            validate: function ValidateEmail(mail) 
+            validate: function validateEmail(mail) 
             {
              if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
               {
-                return (true)
+                return true;
+              } else{
+                return "Please enter a valid email."
               }
-                alert("You have entered an invalid email address!")
-                return (false)
             }            
 
          },
+         {
+            type: "input",
+            name: "office",
+            message: "Enter the number of your manager' office: ",
+            validate: function officeNum(num) {
+                if(!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(num)) {
+                    return "Please enter an integer";
+                } else {
+                    return true;
+                }
+            }
+         }
          
         ])
+        .then((userInput) => {
+            const managerInfo = new manager (
+                userInput.manager,
+                userInput.managerId,
+                userInput.managerEmail,
+                userInput.office,
+            );
+            team.push(managerInfo);
+            id.push(userInput.managerId);
+            add2Roster();
+        });
+    }
+    function add2Roster() {
+        inquirer.prompt([ {
+            type:"list",
+            name:"roleChoice",
+            message: "who would you like to add to your team's roster: ",
+            choices: [
+                "Intern",
+                "Engineer",
+                "I'm finished making the roster."
+            ],
+        },
+     ])
+     .then((choiceMade) =>{
+        switch(choiceMade.roleChoice) {
+            case "Intern":
+                InternEntry();
+                break;
+            case "Engineer":
+                engineerEntry();
+                break;
+            default:
+                renderPage();
+        }
+     })
     }
 }
 
