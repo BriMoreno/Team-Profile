@@ -159,7 +159,56 @@ function init() {
             add2Roster();
         });
     }
-    function engineerEntry(){}
+    function engineerEntry(){
+        inquirer.prompt([ 
+        {
+            type:"input",
+            name:"engName",
+            message:"Enter the engineer's name: ",
+            validate: validData,
+        },
+        {
+            type:"input",
+            name:"engId",
+            message:"Enter the engineer's ID: ",
+            validate: validId,
+        },
+        {
+            type:"input",
+            name:"engEmail",
+            message:"Enter the engineer's Email: ",
+            validate: validateEmail,
+        },
+        {
+            type:"input",
+            name:"gitHub",
+            message:"Enter the engineer's GitHub: ",
+            validate: validData,
+        }
+        ])
+        .then((userInput) => {
+            const engineerInfo = new engineer (
+                userInput.engnName,
+                userInput.engId,
+                userInput.engEmail,
+                userInput.gitHub,
+            );
+            team.push(engineerInfo);
+            id.push(userInput.engId);
+            add2Roster();
+        });
+    }
+    function renderPage() {
+        if(!fs.existsSync(DIST_DIR)) {
+            fs.mkdirSync(DIST_DIR);
+        }
+        console.log("Producing team roster.");
+
+        fs.writeFileSync(outputPath, render(team),"utf8");
+        console.log("Your webpage is in the dist folder")
+    }
+    
+    managerEntry();
 }
 
 init();
