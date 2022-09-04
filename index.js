@@ -30,6 +30,22 @@ function validData(value) {
     }
 }
 
+function validId(value){
+    if (!/^[0-9]*$/.test(value)) {
+        return "Please enter an integer";
+    } else {
+        return true;
+    }
+}
+
+function validateEmail(mail) {
+    if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail)){
+         return true;
+    } else{
+        return "Please enter a valid email."
+    }
+} 
+
 //starts the app and asks users questions
 function init() {
     function managerEntry() {
@@ -45,27 +61,13 @@ function init() {
             type: "input",
             name: "managerId",
             message: "Enter your manager's ID: ",
-            validate: function(value) {
-                if (!/^[0-9]*$/.test(value)) {
-                    return "Please enter an integer";
-                } else {
-                    return true;
-                }
-                },
+            validate:validId,
             },
         {
             type: "input",
             name: "managerEmail",
             message: "Enter your manager's email: ",
-            validate: function validateEmail(mail) 
-            {
-             if (/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(mail))
-              {
-                return true;
-              } else{
-                return "Please enter a valid email."
-              }
-            }            
+            validate:validateEmail,       
 
          },
          {
@@ -109,7 +111,7 @@ function init() {
      .then((choiceMade) =>{
         switch(choiceMade.roleChoice) {
             case "Intern":
-                InternEntry();
+                internEntry();
                 break;
             case "Engineer":
                 engineerEntry();
@@ -117,8 +119,47 @@ function init() {
             default:
                 renderPage();
         }
-     })
+     });
     }
+    function internEntry() {
+        inquirer.prompt([{
+            type:"input",
+            name:"internName",
+            message:"Enter the name of the intern: ",
+            validate: validData,
+        },
+        {
+            type:"input",
+            name:"internId",
+            message:"The intern's ID: ",
+            validate: validId,
+        },
+        {
+            type:"input",
+            name:"internEmail",
+            message:"Enter intern's email: ",
+            validate: validateEmail,
+        },
+        {
+            type:"input",
+            name:"school",
+            message:"What school is the intern attending: ",
+            validate: validData,
+        },
+        ])
+        .then((userInput) => {
+            const internInfo = new intern (
+                userInput.internName,
+                userInput.internId,
+                userInput.internEmail,
+                userInput.school,
+            );
+            team.push(internInfo);
+            id.push(userInput.internId);
+            add2Roster();
+        });
+    }
+    function engineerEntry(){}
 }
 
 init();
