@@ -75,7 +75,7 @@ function init() {
             name: "office",
             message: "Enter the number of your manager' office: ",
             validate: function officeNum(num) {
-                if(!/^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im.test(num)) {
+                if(Number.isInteger(num)) {
                     return "Please enter an integer";
                 } else {
                     return true;
@@ -84,6 +84,7 @@ function init() {
          }
          
         ])
+        //pushing answers to a variable 
         .then((userInput) => {
             const managerInfo = new manager (
                 userInput.manager,
