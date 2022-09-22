@@ -26,7 +26,10 @@ WHEN I decide to finish building my team
 THEN I exit the application, and the HTML is generated
 
 ## Video Demo of the the code
-![Video of the code](TeamRoster.mp4)
+![Click on link to view video](https://user-images.githubusercontent.com/69614167/191634412-6d1e6035-dcc6-41f3-a90d-db88b5dc99b2.mp4)
+
+
+
 
 ## Help
 
