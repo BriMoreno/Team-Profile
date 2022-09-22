@@ -9,13 +9,39 @@ module.exports = roster => {
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title> Team Roster</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-       
+        <style>
+        html{
+            display:flex;
+            overflow:hidden;
+            flex-wrap: wrap;
+            scroll-behavior: smooth;
+        }
+       p, h1, h2, h4, li {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+        }
+        .column{
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            height: 100%;
+        }
+        .card-header-title{
+            height:100px;
+            width: 150px;
+        }
+        .list-item{
+            display: flexbox;
+            padding-top: 10px;
+            width: 200px;
+        }
+       </style>
     </head>
     <body>
         <div class="columns">
             <div class="column">
-                <div class="hero is-info col-12 mb-3">
-                    <h1 class="text-center">The Team Roster</h1>
+                <div class="hero is-primary">
+                    <h1 class="hero-body text-center">The Team Roster</h1>
                 </div>
             </div>
         </div>
@@ -31,39 +57,39 @@ module.exports = roster => {
     `;
 };
 
-// Create roster Profile
+// displaying the roster
 const displayInfo = roster => {
 
-    // Create Manager Profile
+    // display the manager
     const displayManager = manager => {
         return `
         <div class="card">
             <div class="card-header">
-                <h2 class="card-header-title">${manager.returnName()}</h2>
+                <h2 class="card-header-title">${manager.returnId()}</h2>
                 <h4 class="card-header-title">${manager.role()}</h4>
             </div>
             <div class="card-body">
                 <ul class="list">
-                    <li class="list-item">ID: ${manager.returnID()}</li>
+                    <li class="list-item">ID: ${manager.returnName()}</li>
                     <li class="list-item">Email: <a href="mailto:${manager.returnEmail()}">${manager.returnEmail()}</a></li>
-                    <li class="list-item">Office number: <a href="tel:${manager.returnOffice()}">${manager.returnOffice()}</a></li>
+                    <li class="list-item">Office number: ${manager.returnOffice()}</li>
                 </ul>
             </div>
         </div>
         `;
     };
 
-    // Create Engineer Profile
+    // displaying the engineer
     const displayEngineer = engineer => {
         return `
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title">${engineer.returnName()}</h2>
-                <h4 class="card-title">${engineer.role()}</h4>
+                <h2 class="card-header-title">${engineer.returnId()}</h2>
+                <h4 class="card-header-title">${engineer.role()}</h4>
             </div>
             <div class="card-body">
                 <ul class="list">
-                    <li class="list-item">ID: ${engineer.returnID()}</li>
+                    <li class="list-item">ID: ${engineer.returnName()}</li>
                     <li class="list-item">Email: <a href="mailto:${engineer.returnEmail()}">${engineer.returnEmail()}</a></li>
                     <li class="list-item">GitHub: <a href="https://github.com/${engineer.returnHub()}" target="_blank" rel="noopener noreferrer">${engineer.returnHub()}</a></li>
                 </ul>
@@ -72,17 +98,17 @@ const displayInfo = roster => {
         `;
     };
 
-    // Create Intern Profile
+    // displaying the intern
     const displayIntern = intern => {
         return `
         <div class="card">
             <div class="card-header card2">
-                <h2 class="card-title">${intern.returnName()}</h2>
-                <h4 class="card-title"></i>${intern.role()}</h4>
+                <h2 class="card-header-title">${intern.returnId()}</h2>
+                <h4 class="card-header-title"></i>${intern.role()}</h4>
             </div>
             <div class="card-body card3">
                 <ul class="list-group">
-                    <li class="list-item">ID: ${intern.returnID()}</li>
+                    <li class="list-item">ID: ${intern.returnName()}</li>
                     <li class="list-item">Email: <a href="mailto:${intern.returnEmail()}">${intern.returnEmail()}</a></li>
                     <li class="list-item">School: ${intern.returnSchool()}</li>
                 </ul>

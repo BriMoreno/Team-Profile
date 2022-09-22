@@ -189,7 +189,7 @@ function init() {
         ])
         .then((userInput) => {
             const engineerInfo = new engineer (
-                userInput.engnName,
+                userInput.engName,
                 userInput.engId,
                 userInput.engEmail,
                 userInput.gitHub,

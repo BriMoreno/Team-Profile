@@ -7,13 +7,39 @@
         <meta http-equiv="X-UA-Compatible" content="ie=edge" />
         <title> Team Roster</title>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-       
+        <style>
+        html{
+            display:flex;
+            overflow:hidden;
+            flex-wrap: wrap;
+            scroll-behavior: smooth;
+        }
+       p, h1, h2, h4, li {
+        font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        text-align: center;
+        }
+        .column{
+            margin-left: auto;
+            margin-right: auto;
+            text-align: center;
+            height: 100%;
+        }
+        .card-header-title{
+            height:100px;
+            width: 150px;
+        }
+        .list-item{
+            display: flexbox;
+            padding-top: 10px;
+            width: 200px;
+        }
+       </style>
     </head>
     <body>
         <div class="columns">
             <div class="column">
-                <div class="hero is-info col-12 mb-3">
-                    <h1 class="text-center">The Team Roster</h1>
+                <div class="hero is-primary">
+                    <h1 class="hero-body text-center">The Team Roster</h1>
                 </div>
             </div>
         </div>
@@ -23,42 +49,42 @@
                     
         <div class="card">
             <div class="card-header">
-                <h2 class="card-header-title">1234</h2>
+                <h2 class="card-header-title">Joe Doe</h2>
                 <h4 class="card-header-title">Manager</h4>
             </div>
             <div class="card-body">
                 <ul class="list">
-                    <li class="list-item">ID: John Doe</li>
-                    <li class="list-item">Email: <a href="mailto:JohnDoe@live.com">JohnDoe@live.com</a></li>
-                    <li class="list-item">Office number: <a href="tel:123">123</a></li>
+                    <li class="list-item">ID: 1234</li>
+                    <li class="list-item">Email: <a href="mailto:JDoe@email.com">JDoe@email.com</a></li>
+                    <li class="list-item">Office number: 1234</li>
                 </ul>
             </div>
         </div>
         
         <div class="card">
             <div class="card-header">
-                <h2 class="card-title">1290</h2>
-                <h4 class="card-title">Engineer</h4>
+                <h2 class="card-header-title">Juan Lazaro</h2>
+                <h4 class="card-header-title">Engineer</h4>
             </div>
             <div class="card-body">
                 <ul class="list">
-                    <li class="list-item">ID: undefined</li>
-                    <li class="list-item">Email: <a href="mailto:JaneDoe@live.com">JaneDoe@live.com</a></li>
-                    <li class="list-item">GitHub: <a href="https://github.com/JaneDoe" target="_blank" rel="noopener noreferrer">JaneDoe</a></li>
+                    <li class="list-item">ID: 8901</li>
+                    <li class="list-item">Email: <a href="mailto:JLazaro@email.com">JLazaro@email.com</a></li>
+                    <li class="list-item">GitHub: <a href="https://github.com/JLazaro" target="_blank" rel="noopener noreferrer">JLazaro</a></li>
                 </ul>
             </div>
         </div>
         
         <div class="card">
             <div class="card-header card2">
-                <h2 class="card-title">5678</h2>
-                <h4 class="card-title"></i>Intern</h4>
+                <h2 class="card-header-title">Jane Doe</h2>
+                <h4 class="card-header-title"></i>Intern</h4>
             </div>
             <div class="card-body card3">
                 <ul class="list-group">
-                    <li class="list-item">ID: Lawely Law</li>
-                    <li class="list-item">Email: <a href="mailto:LawelyLaw@live.com">LawelyLaw@live.com</a></li>
-                    <li class="list-item">School: University of Californa</li>
+                    <li class="list-item">ID: 5678</li>
+                    <li class="list-item">Email: <a href="mailto:JDoe2@email.com">JDoe2@email.com</a></li>
+                    <li class="list-item">School: University of Washington</li>
                 </ul>
             </div>
         </div>
